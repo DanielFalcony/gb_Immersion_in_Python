@@ -17,12 +17,14 @@ Task 3
 bank_account = 0
 count = 0
 start = 0
+operations = []
 
 
 # Добавление денег и проверка на кратность 50
 def add_money(money: int | float) -> int or float:
     while not money % 50 == 0:
         money = int(input('Банкомат принимает только суммы кратные 50 рублям,\n введите сумму заново ->: '))
+        operation_logs((bank_account + money))
     return bank_account + money
 
 
@@ -31,10 +33,13 @@ def get_money(money: int | float) -> int or float:
     while not money % 50 == 0:
         money = int(input('Банкомат принимает только суммы кратные 50 рублям,\n введите сумму заново ->: '))
     if money <= 2_000:
+        operation_logs(-(bank_account - money) - 30)
         return (bank_account - money) - 30
     elif 2_001 <= money <= 40_000:
+        operation_logs(-(bank_account - money) * 0.985)
         return (bank_account - money) * 0.985
     else:
+        operation_logs(-(bank_account - money) - 600)
         return (bank_account - money) - 600
 
 
@@ -80,6 +85,14 @@ def count_checker(count_cur, val):
         return count_cur, val, f'Начислены проценты!) Баланс счета: {val}'
 
 
+def operation_logs(val: int | float) -> int or float:
+    operations.append(val)
+
+
+def show_log():
+    return operations
+
+
 # match/case пользовательского ввода
 def user_choice(value: int) -> str:
     match value:
@@ -91,6 +104,8 @@ def user_choice(value: int) -> str:
             return 'Проверить счет'
         case 4:
             return 'Выйти'
+        case 5:
+            return 'Посмотреть Лог операций'
 
 
 # match/case работы программы ввода
@@ -108,6 +123,8 @@ def start_bank(value: str) -> int or float:
             return print_bank()
         case 'Выйти':
             return bank_exit()
+        case 'Посмотреть Лог операций':
+            return show_log()
 
 
 # Исполнительная часть
@@ -119,6 +136,7 @@ while True:
                       f'2 - Снять деньги со счета\n'
                       f'3 - Вывести текущий баланс\n'
                       f'4 - Выйти из банкомата\n'
+                      f'5 - Посмотреть Лог операций\n'
                       f'Вводить сюда ---->: '))
     bank_account, *_ = check_bank(bank_account)
     if _[0]:
