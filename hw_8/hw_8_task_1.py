@@ -61,7 +61,7 @@ def traverse_directory(directory):
     csv_path = 'result.csv'
 
     with open(json_path, 'w', encoding='utf-8') as json_file:
-        json.dump(result, json_file, indent=4)
+        json.dump(result, json_file, ensure_ascii=False, indent=4)
 
     with open(csv_path, 'w', encoding='utf-8', newline='') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=result[0].keys())
@@ -72,6 +72,5 @@ def traverse_directory(directory):
 
 
 if __name__ == '__main__':
-
     directory_path = 'A:\PythonPyCharm\PyCharmProjects\gb_Immersion_in_Python\hw_7'  # Заменить на свой путь к директории
     traverse_directory(directory_path)

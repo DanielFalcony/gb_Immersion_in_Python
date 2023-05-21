@@ -9,7 +9,7 @@ import os
 my_path = (os.path.abspath('hw_5_task_2.py'))
 
 
-# my_path = 'A:\PythonPyCharm\PyCharmProjects\gb_Immersion_in_Python\hw_5\hw_5_task_2.py' - путь к файлу, у меня в ПК
+# my_path = r'A:\PythonPyCharm\PyCharmProjects\gb_Immersion_in_Python\hw_5\hw_5_task_2.py' - путь к файлу, у меня в ПК
 
 # С помощью Лямбда-функции, режем правым поиском, индексы нужных разделителей и сохраняем обрезки в эл. Картежа.
 def get_file_info(path):

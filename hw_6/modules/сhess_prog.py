@@ -51,7 +51,7 @@ def arrange_the_figures(position, size):
     chessboard = [['0' for x in range(size)] for y in range(size)]
     queens_positions = position
     for i in range(size):
-        row, column = queens_positions[i]
+        column, row = queens_positions[i]
         if chessboard[row][column] != 'X':
             chessboard[row][column] = 'X'
         else:

@@ -12,5 +12,6 @@ good_list = []
 pairs = [(0, 0), (1, 4), (2, 7), (3, 5), (4, 2), (5, 6), (6, 1), (7, 3)]
 print(check_horizontal_and_vertical(pairs))
 good_list.append(pairs)
+print(f'Расстановка {pairs}')
 print_the_desk(good_list, len(pairs))
 
