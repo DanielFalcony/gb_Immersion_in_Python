@@ -1,4 +1,5 @@
 import logging
+from sys import argv
 
 """
 Задание
@@ -48,5 +49,7 @@ def triangle(sides: tuple) -> str:
 
 
 if __name__ == '__main__':
+    name, first, second, third = argv
+    triangle((int(first), int(second), int(third)))
     triangle((3, 4, 3))
     triangle((3, 4, 5))
